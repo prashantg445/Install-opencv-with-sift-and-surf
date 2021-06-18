@@ -1,14 +1,16 @@
 # Author: Prashant Gupta
-
+read -p "[sudo] password: "  pwd
 read -p "Enter absolute path of directory where downloaded packages will reside: "  INSTALL_DIR
 read -p "Enter absolute path of python enivroment: "  ENV_PATH
+echo "Check python version using 'python --version', it should be like Python 3.x.y. Like enter 6 for Python 3.6.9"
+read -p "Enter x : "  x
 
 # Step 0
 . $ENV_PATH/bin/activate
 
 # Step 1
-yes | sudo apt-get update
-yes | sudo apt-get upgrade
+$pwd | sudo apt-get update
+yes | sudo apt-get -y upgrade
 yes | sudo apt-get install build-essential cmake unzip pkg-config
 yes | sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
 yes | sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
@@ -39,8 +41,12 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_
 
 make -j8
 
-sudo make installr/local/python/cv2/python-3.5
+$pwd | sudo make install
 sudo ldconfig
+
+# Step 5
+cd $ENV_PATH/lib/python3.${x}/site-packages
+ln -s /usr/local/python/cv2/python-3.${x}/cv2.cpython-3${x}m-x86_64-linux-gnu.so cv2.so
 
 
 

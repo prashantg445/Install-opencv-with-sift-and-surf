@@ -9,7 +9,7 @@ read -p "Enter x : "  x
 . $ENV_PATH/bin/activate
 
 # Step 1
-$pwd | sudo apt-get update
+echo $pwd | sudo -S apt-get update
 yes | sudo apt-get -y upgrade
 yes | sudo apt-get install build-essential cmake unzip pkg-config
 yes | sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
@@ -41,7 +41,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_
 
 make -j8
 
-$pwd | sudo make install
+echo $pwd | sudo -S make install
 sudo ldconfig
 
 # Step 5

@@ -26,3 +26,7 @@ Also, try using SIFT:
 `sift = cv2.xfeatures2d.SIFT_create()`
 It should not give any error
 
+# Troubleshooting:
+You might not get any error while installing but at the time of importing. It's hard to find why, but most probably last step of the script didn't worked out.
+So, manually copy `cv2.cpython-36m-x86_64-linux-gnu.so` file (found inside your downloaded packages directory `opencv/build/lib/python3/`) into both the system site-packages directory(`/usr/local/python/cv2/python-3.6/` or `/usr/local/lib/python3.6/dist-packages/cv2/python-3.6`) as well as the site-packages directory of virtual environment (`env/lib/python3.6/site-packages/`).
+

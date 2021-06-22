@@ -39,7 +39,7 @@ cd build
 # Step 4
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D OPENCV_ENABLE_NONFREE=ON -D OPENCV_EXTRA_MODULES_PATH=$INSTALL_DIR/opencv_contrib/modules -D PYTHON_EXECUTABLE=$ENV_PATH/bin/python -D BUILD_EXAMPLES=ON ..
 
-make -j8
+make -j$(nproc)
 
 echo $pwd | sudo -S make install
 sudo ldconfig
